@@ -75,9 +75,10 @@ function App() {
 useEffect(()=>{
   async function fetchData(){
     try {
-      const res = await axios.get(`http://localhost:8000/questions`)
+      const res = await axios.get(`${import.meta.env.BASE_URL}questions.json`)
       const data = await res.data
       dispatch({type:"dataRecived", payload : data})
+      console.log("Fetched questions: ", data)
       
     } catch (error) {
       dispatch({type : "dataFailed"})
